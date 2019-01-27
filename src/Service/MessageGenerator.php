@@ -15,10 +15,16 @@ class MessageGenerator
    */
   private $requestStack;
 
-  public function __construct(NameGenerator $nameGenerator, RequestStack $requestStack)
+  /**
+   * @var string
+   */
+  private $adminEmail;
+
+  public function __construct(NameGenerator $nameGenerator, RequestStack $requestStack, $adminEmail)
   {
     $this->nameGenerator = $nameGenerator;
     $this->requestStack = $requestStack;
+    $this->adminEmail = $adminEmail;
   }
 
   public function helloMessage()
@@ -27,7 +33,7 @@ class MessageGenerator
     if(empty($name)){
       $name = $this->nameGenerator->randomName();
     }
-    $message = 'Hello '.$name;
+    $message = 'Hello '.$name. ', admin mail: '.$this->adminEmail;
     return $message;
   }
 }
