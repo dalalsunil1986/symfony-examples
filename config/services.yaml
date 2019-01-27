@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    admin_email: 'editor@project.com'
 
 services:
     # default configuration for services in *this* file
@@ -29,4 +30,4 @@ services:
 
     App\Service\MessageGenerator:
         arguments:
-            $adminEmail: 'support@project.com'
+            $adminEmail: '%admin_email%'
